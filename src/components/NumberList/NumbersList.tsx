@@ -11,6 +11,9 @@ const NumberList = () => {
             <li key={index}>{number}</li>
           )
         }
+        {
+          return null;
+        }
       })}
     </div>
   )
