@@ -13,7 +13,7 @@ const CounterButton = ({ title, active = false }: CounterButtonProps) => {
     setCounter(counter + 1)
   }
   return (
-    <div>
+    <div className="container">
       <div>
         {counter}
       </div>

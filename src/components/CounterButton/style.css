@@ -1,5 +1,12 @@
 button {
  background: rgb(13, 158, 13);
  border: white;
- color:black
+ color:black;
+ margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
