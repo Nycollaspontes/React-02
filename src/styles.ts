@@ -12,3 +12,7 @@ export const GlobalStyle = createGlobalStyle`
 body {
   background : #222;
 }`;
+
+export const colors = {
+  primary: "#FFC93F",
+};

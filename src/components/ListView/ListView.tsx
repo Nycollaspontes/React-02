@@ -3,6 +3,7 @@ import { Container, Input, ToDoListContainer } from './ListView.styles';
 import Spacer from '../Spacer';
 import { Itask } from './ListView.types';
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 
 
 
@@ -13,8 +14,11 @@ const ListView = () => {
 
   return (
     <Container>
+      <h2>To Do Ada</h2>
       <Spacer height={1} />
-      <Input />
+      <Input placeholder='Adicione uma tarefa'
+      value={newTaskLabel}
+       />
       <Spacer height={2}/>
       <ToDoListContainer>
       oi  
