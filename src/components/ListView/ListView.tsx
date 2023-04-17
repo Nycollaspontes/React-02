@@ -1,24 +1,25 @@
 import './ListView.styles'
+import { Container, Input, ToDoListContainer } from './ListView.styles';
+import Spacer from '../Spacer';
+import { Itask } from './ListView.types';
+import { useState } from 'react';
 
 
-interface NumberListProps {
-  ArrayNumbers : number[];
-}
 
-const ListView = ({ArrayNumbers}:NumberListProps) => {
+const ListView = () => {
+  const [Tasks, SetTasks] = useState<Itask[]>([])
+  const [newTaskLabel , setNewTaskLabel] = useState("")
+
+
   return (
-    <div className='container'>
-      {ArrayNumbers.map((number, index) => {
-        if (number % 2 > 0) {
-          return (
-            <li key={index}>{number}</li>
-          )
-        }
-        {
-          return null;
-        }
-      })}
-    </div>
+    <Container>
+      <Spacer height={1} />
+      <Input />
+      <Spacer height={2}/>
+      <ToDoListContainer>
+      oi  
+      </ToDoListContainer>
+    </Container>
   )
 }
 

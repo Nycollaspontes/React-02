@@ -11,8 +11,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <CounterButton title={"Aperte para incrementar"} />
-      <ListView ArrayNumbers={ArrayNumbers} />
+      <ListView  />
     </>
   )
 }
