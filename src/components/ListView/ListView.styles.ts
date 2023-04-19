@@ -19,10 +19,12 @@ export const ToDoListContainer = styled.div`
 `;
 
 export const ToDoItem = styled.div`
-  background-color: white;
+  background-color: grey;
   padding: 0.5rem 0rem;
   align-items: center;
   font-size: 1.2rem;
+  color: black;
+  display: flex;
 `;
 
 export const Input = styled.input`

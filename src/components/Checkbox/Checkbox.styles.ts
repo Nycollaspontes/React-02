@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const HiddenCheckbox = styled.input`
-  border: none;
+  border: 0;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
@@ -21,11 +21,11 @@ export const HiddenCheckbox = styled.input`
 `;
 
 export const StyledCheckbox = styled.div<CheckboxProps>`
-display : inline-block;
-width: 1.5rem;
-height: 1.5rem;
-background: ${(props) => (props.checked ? colors.primary : "none")};
-border: 3px solid ${"green"};
-border-radius: 1.5rem;
-transition: all 0.2;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: ${(props) => (props.checked ? colors.primary : "none")};
+  border: 3px solid ${colors.primary};
+  border-radius: 25px;
+  transition: all 100ms;
 `;
