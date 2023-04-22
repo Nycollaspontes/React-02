@@ -17,7 +17,6 @@ body , input {
 export const AppLayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 3 rem;
   min-height: 100vh;

@@ -2,22 +2,26 @@ import styled from "styled-components";
 import { CheckboxProps } from "./Checkbox.types";
 import { colors } from "../../styles";
 
-export const Container = styled.div`
+export const Container = styled.div<CheckboxProps>`
   display: inline-block;
   vertical-align: middle;
+
+  
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
 `;
 
-export const HiddenCheckbox = styled.input`
+export const HiddenCheckbox = styled.input.attrs({
+  type: "checkbox",
+})<CheckboxProps>`
+  opacity:0;
   border: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
   overflow: hidden;
   padding: 0;
   position: absolute;
   white-space: nowrap;
-  width: 1px;
+  background-color: ${(props) => (props.checked ? colors.primary :"transparent")};
 `;
 
 export const StyledCheckbox = styled.div<CheckboxProps>`
@@ -28,4 +32,5 @@ export const StyledCheckbox = styled.div<CheckboxProps>`
   border: 3px solid ${colors.primary};
   border-radius: 25px;
   transition: all 100ms;
+  z-index: 2;
 `;

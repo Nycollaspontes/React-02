@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { CheckboxProps } from "../Checkbox/Checkbox.types";
 
 export const Container = styled.div`
   display: flex;
@@ -18,13 +19,18 @@ export const ToDoListContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ToDoItem = styled.div`
+export const ToDoListContainerEmpty = styled.div`
+  background-color: #222;
+`;
+
+export const ToDoItem = styled.div<CheckboxProps>`
   background-color: grey;
   padding: 0.5rem 0rem;
   align-items: center;
   font-size: 1.2rem;
   color: black;
   display: flex;
+  ${(props) => (props.checked ? "text-decoration:line-through" : "")}
 `;
 
 export const Input = styled.input`
