@@ -5,22 +5,25 @@ import ListView from './components/ListView/ListView';
 import Header from './components/Header/Header';
 import Spacer from './components/Spacer';
 import { useEffect } from 'react';
+import { TaskProvider } from './context/task.context';
 
 
 function App() {
 
-  useEffect (() => {
-    document.title="To do Ada"
-  },[])
+  useEffect(() => {
+    document.title = "To do Ada"
+  }, [])
 
   return (
     <>
-      <GlobalStyle />
-      <AppLayoutContainer>
-        <Spacer height={2} />
-        <Header />
-        <ListView />
-      </AppLayoutContainer>
+      <TaskProvider>
+        <GlobalStyle />
+        <AppLayoutContainer>
+          <Spacer height={2} />
+          <Header />
+          <ListView />
+        </AppLayoutContainer>
+      </TaskProvider>
     </>
   )
 }

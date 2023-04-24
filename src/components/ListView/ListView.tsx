@@ -1,19 +1,19 @@
 import './ListView.styles'
 import { Container, Input, ToDoListContainer, ToDoListContainerEmpty } from './ListView.styles';
 import Spacer from '../Spacer';
-import { Itask } from './ListView.types';
+import { ITask } from './ListView.types';
 import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
 import { nanoid } from 'nanoid';
-import { ToDoItem } from './ListView.styles';
+import { ToDoItem, DeleteButton } from './ListView.styles';
 import Checkbox from '../Checkbox/Checkbox';
 import Trash from '../../assets/lixeira.png'
-import { DeleteButton } from '../DeleteButton/DeleteButton';
+import { useTask } from '../../context/task.context';
 
 
 
 const ListView = () => {
 
-  const [tasks, setTasks] = useState<Itask[]>([])
+  const { tasks, setTasks } = useTask()
   const [newTaskLabel, setNewTaskLabel] = useState("")
   const [searchTerm, setSearchTerm] = useState("")
 
@@ -24,7 +24,7 @@ const ListView = () => {
   const handleNewTaskLabelChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNewTaskLabel(event.target.value)
   }
-  const saveTaskLocalStorage = (updatedTasks: Itask[]) => {
+  const saveTaskLocalStorage = (updatedTasks: ITask[]) => {
     const taskStringify = JSON.stringify(updatedTasks)
     localStorage.setItem("tasks", taskStringify)
   }
@@ -36,7 +36,7 @@ const ListView = () => {
 
   const addTask = (label: string) => {
     const id = nanoid()
-    const currentTask: Itask = { id, label: label, isComplete: false }
+    const currentTask: ITask = { id, label: label, isComplete: false }
     const updatedTasks = [...tasks, currentTask]
     setTasks(updatedTasks)
     saveTaskLocalStorage(updatedTasks)
@@ -51,7 +51,7 @@ const ListView = () => {
     );
   };
 
-  const handleTaskCompleteChange = (task: Itask) => (event: ChangeEvent<HTMLInputElement>) => {
+  const handleTaskCompleteChange = (task: ITask) => (event: ChangeEvent<HTMLInputElement>) => {
     updateTaskCompletion(task.id, event.target.checked);
   };
 
@@ -106,6 +106,9 @@ const ListView = () => {
                 <Spacer width={2} />
                 {task.label}
                 <Spacer flex={1} />
+                <DeleteButton onClick={() => handleDeleteTask(task.id)}>
+                <img src={Trash}/>
+                </DeleteButton>
               </ToDoItem>
             ))}
         </ToDoListContainer>

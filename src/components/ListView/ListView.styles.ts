@@ -47,3 +47,20 @@ export const Input = styled.input`
   padding: 1rem 1.5rem;
   border-radius: 1.5rem;
 `;
+
+
+export const  DeleteButton = styled.button`
+width: 1rem;
+height: 1rem;
+background: grey;
+display: flex;
+align-items: center;
+justify-content: center;
+border: none;
+margin-left:3rem;
+
+img{
+  width: 2rem;
+  height: 2rem;
+}
+`
