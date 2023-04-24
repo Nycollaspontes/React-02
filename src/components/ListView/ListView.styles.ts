@@ -20,7 +20,14 @@ export const ToDoListContainer = styled.div`
 `;
 
 export const ToDoListContainerEmpty = styled.div`
-  background-color: #222;
+  background-color: grey;
+  width: 20rem;
+  height: auto;
+  display: flex;
+  img {
+    width: 10rem;
+    height: 10rem;
+  }
 `;
 
 export const ToDoItem = styled.div<CheckboxProps>`

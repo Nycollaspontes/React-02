@@ -6,6 +6,8 @@ import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { ToDoItem } from './ListView.styles';
 import Checkbox from '../Checkbox/Checkbox';
+import Trash from '../../assets/lixeira.png'
+import { DeleteButton } from '../DeleteButton/DeleteButton';
 
 
 
@@ -13,6 +15,11 @@ const ListView = () => {
 
   const [tasks, setTasks] = useState<Itask[]>([])
   const [newTaskLabel, setNewTaskLabel] = useState("")
+  const [searchTerm, setSearchTerm] = useState("")
+
+  const handleSearchTerm = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value)
+  }
 
   const handleNewTaskLabelChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNewTaskLabel(event.target.value)
@@ -20,6 +27,11 @@ const ListView = () => {
   const saveTaskLocalStorage = (updatedTasks: Itask[]) => {
     const taskStringify = JSON.stringify(updatedTasks)
     localStorage.setItem("tasks", taskStringify)
+  }
+
+  const handleDeleteTask = (id: string) => {
+    const updatedList = tasks.filter(task => task.id !== id);
+    setTasks(updatedList);
   }
 
   const addTask = (label: string) => {
@@ -61,10 +73,17 @@ const ListView = () => {
     }
     fetchTasks()
 
-  }  , [])
+  }, [])
 
   return (
     <Container>
+      <Spacer height={4} />
+      <Input
+        placeholder="Pesquise a tarefa"
+        value={searchTerm}
+        onChange={handleSearchTerm}
+        onKeyPress={handleNewTaskKeyPress}
+      />
       <Spacer height={4} />
       <Input
         placeholder="Adicione sua tarefa"
@@ -75,21 +94,26 @@ const ListView = () => {
       <Spacer height={4} />
       {tasks.length > 0 ? (
         <ToDoListContainer >
-          {tasks.map((task) => (
-            <ToDoItem key={task.id} checked={task.isComplete}>
-              <Checkbox
-                key={task.id}
-                checked={task.isComplete}
-                onClick={handleTaskCompleteChange(task)}
-              />
-              <Spacer width={2} />
-              {task.label}
-              <Spacer flex={1} />
-            </ToDoItem>
-          ))}
+
+          {tasks.filter(task => task.label.includes(searchTerm))
+            .map((task) => (
+              <ToDoItem key={task.id} checked={task.isComplete}>
+                <Checkbox
+                  key={task.id}
+                  checked={task.isComplete}
+                  onClick={handleTaskCompleteChange(task)}
+                />
+                <Spacer width={2} />
+                {task.label}
+                <Spacer flex={1} />
+              </ToDoItem>
+            ))}
         </ToDoListContainer>
       ) : (
-        <ToDoListContainerEmpty />
+        <ToDoListContainerEmpty>
+          <h2>A lista de tarefas esta vazia.</h2>
+          <img src={Trash} alt="" />
+        </ToDoListContainerEmpty>
       )}
 
 
