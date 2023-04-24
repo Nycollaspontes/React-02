@@ -4,9 +4,15 @@ import { AppLayoutContainer, GlobalStyle } from './styles';
 import ListView from './components/ListView/ListView';
 import Header from './components/Header/Header';
 import Spacer from './components/Spacer';
+import { useEffect } from 'react';
 
 
 function App() {
+
+  useEffect (() => {
+    document.title="To do Ada"
+  },[])
+
   return (
     <>
       <GlobalStyle />

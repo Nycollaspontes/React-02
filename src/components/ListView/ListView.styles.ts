@@ -30,7 +30,8 @@ export const ToDoItem = styled.div<CheckboxProps>`
   font-size: 1.2rem;
   color: black;
   display: flex;
-  ${(props) => (props.checked ? "text-decoration:line-through" : "")}
+  ${(props) => (props.checked ? "text-decoration:line-through" : "")};
+  ${(props ) => (props.checked ? "color: red"  :"")};
 `;
 
 export const Input = styled.input`
