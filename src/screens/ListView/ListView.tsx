@@ -1,25 +1,23 @@
 import './ListView.styles'
 import { Container, Input, ToDoListContainer, ToDoListContainerEmpty } from './ListView.styles';
-import Spacer from '../Spacer';
 import { ITask } from './ListView.types';
 import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { ToDoItem, DeleteButton } from './ListView.styles';
-import Checkbox from '../Checkbox/Checkbox';
+
 import Trash from '../../assets/lixeira.png'
 import { useTask } from '../../context/task.context';
+import Checkbox from '../../components/Checkbox/Checkbox';
+import Spacer from '../../components/Spacer';
+import SearchTerm from '../../components/SearchTerm/SearchTerm';
 
 
 
 const ListView = () => {
 
-  const { tasks, setTasks } = useTask()
+  const { tasks, setTasks } = useTask();
+  const { searchTerm, setSearchTerm } = useTask();
   const [newTaskLabel, setNewTaskLabel] = useState("")
-  const [searchTerm, setSearchTerm] = useState("")
-
-  const handleSearchTerm = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value)
-  }
 
   const handleNewTaskLabelChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNewTaskLabel(event.target.value)
@@ -78,12 +76,7 @@ const ListView = () => {
   return (
     <Container>
       <Spacer height={4} />
-      <Input
-        placeholder="Pesquise a tarefa"
-        value={searchTerm}
-        onChange={handleSearchTerm}
-        onKeyPress={handleNewTaskKeyPress}
-      />
+      <SearchTerm />
       <Spacer height={4} />
       <Input
         placeholder="Adicione sua tarefa"
@@ -95,7 +88,7 @@ const ListView = () => {
       {tasks.length > 0 ? (
         <ToDoListContainer >
 
-          {tasks.filter(task => task.label.includes(searchTerm))
+          {tasks.filter(task => task.label.toLowerCase().includes(searchTerm.toLowerCase()))
             .map((task) => (
               <ToDoItem key={task.id} checked={task.isComplete}>
                 <Checkbox
@@ -107,7 +100,7 @@ const ListView = () => {
                 {task.label}
                 <Spacer flex={1} />
                 <DeleteButton onClick={() => handleDeleteTask(task.id)}>
-                <img src={Trash}/>
+                  <img src={Trash} />
                 </DeleteButton>
               </ToDoItem>
             ))}

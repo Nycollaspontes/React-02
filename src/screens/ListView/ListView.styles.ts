@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CheckboxProps } from "../Checkbox/Checkbox.types";
+import { CheckboxProps } from "../../components/Checkbox/Checkbox.types";
 
 export const Container = styled.div`
   display: flex;

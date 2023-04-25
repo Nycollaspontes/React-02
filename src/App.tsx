@@ -1,11 +1,10 @@
 import './App.css';
-import CounterButton from './components/CounterButton/CounterButton';
 import { AppLayoutContainer, GlobalStyle } from './styles';
-import ListView from './components/ListView/ListView';
 import Header from './components/Header/Header';
 import Spacer from './components/Spacer';
 import { useEffect } from 'react';
 import { TaskProvider } from './context/task.context';
+import ListView from './screens/ListView/ListView';
 
 
 function App() {
