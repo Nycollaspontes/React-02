@@ -9,13 +9,12 @@ import { useTask } from '../../context/task.context';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import Spacer from '../../components/Spacer';
 import SearchTerm from '../../components/SearchTerm/SearchTerm';
-import { Status } from '../../components/Status/Status';
 
 
 
 const ListView = () => {
 
-  const { tasks, tasksFilter, addTask, handleDeleteTask, updateTaskCompletion } = useTask();
+  const { tasks, tasksFilter, addTask, handleDeleteTask, updateTaskCompletion,Status } = useTask();
   const [newTaskLabel, setNewTaskLabel] = useState("")
 
   const handleNewTaskLabelChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +40,7 @@ const ListView = () => {
     <Container>
       <Spacer height={4} />
       <SearchTerm />
-      {Status}
+     {Status}
       <Spacer height={4} />
       <Input
         placeholder="Adicione sua tarefa"
