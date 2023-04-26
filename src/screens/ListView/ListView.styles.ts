@@ -21,9 +21,14 @@ export const ToDoListContainer = styled.div`
 
 export const ToDoListContainerEmpty = styled.div`
   background-color: grey;
-  width: 20rem;
+  width: 30rem;
   height: auto;
   display: flex;
+  border-radius: 20px;
+  font-size: 14px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
   img {
     width: 10rem;
     height: 10rem;

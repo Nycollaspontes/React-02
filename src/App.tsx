@@ -1,11 +1,10 @@
+import { Suspense, useEffect, lazy } from 'react';
 import './App.css';
 import { AppLayoutContainer, GlobalStyle } from './styles';
-import Header from './components/Header/Header';
 import Spacer from './components/Spacer';
-import { useEffect } from 'react';
 import { TaskProvider } from './context/task.context';
-import ListView from './screens/ListView/ListView';
-
+const Header = lazy(() => import('./components/Header/Header'));
+const ListView = lazy(() => import('../src/screens/ListView/ListView'));
 
 function App() {
 
@@ -17,11 +16,13 @@ function App() {
     <>
       <TaskProvider>
         <GlobalStyle />
-        <AppLayoutContainer>
-          <Spacer height={2} />
-          <Header />
-          <ListView />
-        </AppLayoutContainer>
+        <Suspense fallback={<div>Carregando...</div>}>
+          <AppLayoutContainer>
+            <Spacer height={2} />
+            <Header />
+            <ListView />
+          </AppLayoutContainer>
+        </Suspense>
       </TaskProvider>
     </>
   )
