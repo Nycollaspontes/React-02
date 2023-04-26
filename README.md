@@ -10,8 +10,8 @@ Clone esse repositório localmente, em uma pasta.
 Abra o terminal dentro da pasta.
 
 Instale as dependências.
+npm install
 
-  npm install
 Execute a aplicação.
   npm start
   
