@@ -1,4 +1,4 @@
-##React-02##
+# React-02
 
 Este repositório se concentra no aprendizado de React durante o segundo módulo do programa de Front-End oferecido pela Ada. A tecnologia usada na parte do Front-end é React, junto com Typescript.
 
