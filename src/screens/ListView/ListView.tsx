@@ -6,7 +6,6 @@ import { StyledToDoItem, DeleteButton } from './ListView.styles';
 
 import Trash from '../../assets/lixeira.png'
 import { useTask } from '../../context/task.context';
-import Checkbox from '../../components/Checkbox/Checkbox';
 import Spacer from '../../components/Spacer';
 import SearchTerm from '../../components/SearchTerm/SearchTerm';
 import TodoListItem from '../../components/ToDoListItem/ToDoListItem';
@@ -58,7 +57,7 @@ const ListView = () => {
                <TodoListItem eachTask={task} handleTaskCompleteChange={handleTaskCompleteChange(task)} />
                 <Spacer flex={1} />
                 <DeleteButton onClick={() => handleDeleteTask(task.id)}>
-                  <img src={Trash} />
+                  <img src={Trash} alt="Botao de deletar" />
                 </DeleteButton>
               </StyledToDoItem>
             ))}
@@ -66,7 +65,7 @@ const ListView = () => {
       ) : (
         <ToDoListContainerEmpty>
           <h2>A lista de tarefas esta vazia.</h2>
-          <img src={Trash} alt="" />
+          <img src={Trash} alt="Lixeira vazia"/>
         </ToDoListContainerEmpty>
       )}
 
