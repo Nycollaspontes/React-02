@@ -23,5 +23,5 @@ export const AppLayoutContainer = styled.div`
 `;
 
 export const colors = {
-  primary: "#90ee90",
+  primary: "#1C5D99",
 };

@@ -1,9 +1,10 @@
 import { Container } from "./Header.style"
+import logo from '../../assets/logo.svg'
 
 export const Header = () => {
   return (
     <Container>
-      <h2>To do ADA</h2>
+      <img src={logo} alt="" />
     </Container>
   )
 }

@@ -30,7 +30,7 @@ export const ToDoListContainerEmpty = styled.div`
   }
 `;
 
-export const ToDoItem = styled.div<CheckboxProps>`
+export const StyledToDoItem = styled.div<CheckboxProps>`
   background-color: grey;
   padding: 0.5rem 0rem;
   align-items: center;
@@ -38,7 +38,7 @@ export const ToDoItem = styled.div<CheckboxProps>`
   color: black;
   display: flex;
   ${(props) => (props.checked ? "text-decoration:line-through" : "")};
-  ${(props ) => (props.checked ? "color: red"  :"")};
+  ${(props ) => (props.checked ? "color: white"  :"")};
 `;
 
 export const Input = styled.input`

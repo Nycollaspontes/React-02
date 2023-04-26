@@ -2,19 +2,20 @@ import './ListView.styles'
 import { Container, Input, ToDoListContainer, ToDoListContainerEmpty } from './ListView.styles';
 import { ITask } from './ListView.types';
 import { ChangeEvent, useState, KeyboardEvent } from 'react';
-import { ToDoItem, DeleteButton } from './ListView.styles';
+import { StyledToDoItem, DeleteButton } from './ListView.styles';
 
 import Trash from '../../assets/lixeira.png'
 import { useTask } from '../../context/task.context';
 import Checkbox from '../../components/Checkbox/Checkbox';
 import Spacer from '../../components/Spacer';
 import SearchTerm from '../../components/SearchTerm/SearchTerm';
+import TodoListItem from '../../components/ToDoListItem/ToDoListItem';
 
 
 
 const ListView = () => {
 
-  const { tasks, tasksFilter, addTask, handleDeleteTask, updateTaskCompletion,Status } = useTask();
+  const { tasks, tasksFilter, addTask, handleDeleteTask, updateTaskCompletion, Status } = useTask();
   const [newTaskLabel, setNewTaskLabel] = useState("")
 
   const handleNewTaskLabelChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -40,8 +41,8 @@ const ListView = () => {
     <Container>
       <Spacer height={4} />
       <SearchTerm />
-     {Status}
-      <Spacer height={4} />
+      {Status}
+      <Spacer height={2} />
       <Input
         placeholder="Adicione sua tarefa"
         value={newTaskLabel}
@@ -53,19 +54,13 @@ const ListView = () => {
         <ToDoListContainer >
           {tasksFilter
             .map((task) => (
-              <ToDoItem key={task.id} checked={task.isComplete}>
-                <Checkbox
-                  key={task.id}
-                  checked={task.isComplete}
-                  onClick={handleTaskCompleteChange(task)}
-                />
-                <Spacer width={2} />
-                {task.label}
+              <StyledToDoItem key={task.id} checked={task.isComplete}>
+               <TodoListItem eachTask={task} handleTaskCompleteChange={handleTaskCompleteChange(task)} />
                 <Spacer flex={1} />
                 <DeleteButton onClick={() => handleDeleteTask(task.id)}>
                   <img src={Trash} />
                 </DeleteButton>
-              </ToDoItem>
+              </StyledToDoItem>
             ))}
         </ToDoListContainer>
       ) : (
