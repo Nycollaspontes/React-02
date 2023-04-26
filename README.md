@@ -1,1 +1,1 @@
-Nesta aula adicionei a funcao de deletar as taks e criamos um contexto.
+Nesta aula adicionei a função de deletar as tasks e criamos um contexto.
