@@ -31,6 +31,6 @@ export const StyledCheckbox = styled.div<CheckboxProps>`
   background: ${(props) => (props.checked ? colors.primary : "none")};
   border: 3px solid ${colors.primary};
   border-radius: 25px;
-  transition: all 100ms;
+  transition: all 0.1s;
   z-index: 2;
 `;

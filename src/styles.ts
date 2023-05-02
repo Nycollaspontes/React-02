@@ -10,7 +10,7 @@ body {
   color: #fff;
 }
 body , input {
-  font-family: "Roboto", sans-serif;   
+  font-family: "Inter", sans-serif;   
 }
 
 `;

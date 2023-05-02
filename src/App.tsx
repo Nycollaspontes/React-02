@@ -1,10 +1,12 @@
 import { Suspense, useEffect, lazy } from 'react';
 import './App.css';
 import { AppLayoutContainer, GlobalStyle } from './styles';
-import Spacer from './components/Spacer';
 import { TaskProvider } from './context/task.context';
-const Header = lazy(() => import('./components/Header/Header'));
+import Register from './screens/Register/Register';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { IRegisterData } from './screens/Register/Register.types';
 const ListView = lazy(() => import('../src/screens/ListView/ListView'));
+
 
 function App() {
 
@@ -18,9 +20,12 @@ function App() {
         <GlobalStyle />
         <Suspense fallback={<div>Carregando...</div>}>
           <AppLayoutContainer>
-            <Spacer height={2} />
-            <Header />
-            <ListView />
+            <Router>
+              <Routes>
+                <Route path='/' element={<Register onSubmit={function handleSubmit(data: IRegisterData): void { }} />} />
+                <Route path="/listview" element={<ListView />} />
+              </Routes>
+            </Router>
           </AppLayoutContainer>
         </Suspense>
       </TaskProvider>
